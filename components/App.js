@@ -6,6 +6,7 @@ import SelectedSongs from "./SelectedSongs";
 import makeSlides from "../utils/makeSlides";
 import {ProgressBar, Toast, ToastContainer, Image} from "react-bootstrap";
 import { DragDropContext } from "react-beautiful-dnd";
+import * as Fathom from "fathom-client";
 
 
 export default function App() {
@@ -57,6 +58,7 @@ export default function App() {
     // Make slides
     function handleSubmit() {
         setLoading(true);
+        Fathom.trackGoal('YMDOEQUB', 0);
         makeSlides(selectedSongs).finally(() => {
             setLoading(false);
             setSlidesCreated(true);

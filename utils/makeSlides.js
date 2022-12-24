@@ -50,6 +50,9 @@ async function makeSlides(selectedSongs) {
         usedSongTitles.push(songTitle);
     })
 
+    // count slideshows created
+    window.fathom.trackGoal('CERWLEIP', 0);
+
     // save the presentation
     await pres.writeFile({fileName: 'musicminapp-worship-slides.pptx'});
 }

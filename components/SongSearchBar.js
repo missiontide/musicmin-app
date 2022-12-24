@@ -100,7 +100,7 @@ class SongSearchBar extends React.Component {
                                 </tbody>
                             </Table>
                             {/* drop shadow image */}
-                            <Image src={dropShadow} alt="drop shadow" fluid />
+                            <Image src="/dropshadow.png" alt="drop shadow" fluid />
                         </div>
                     </>)
                 }

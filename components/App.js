@@ -21,7 +21,7 @@ export default function App() {
     useEffect(() => {
         // function to make GET request to server for api
         const getData = async () => {
-            const response = await fetch((process.env.MUSICMIN_DB_HOST) + "/songs");
+            const response = await fetch((process.env.NEXT_PUBLIC_MUSICMIN_DB_HOST) + "/api/songs");
             const data = await response.json();
 
             setSongs(data);

@@ -66,7 +66,7 @@ export default function SelectedSongs(props) {
                     {/* make slides button */}
                     <Button variant="primary" style={{height: '6rem'}}
                             className="float-end fixed-bottom position-absolute"
-                            onClick={() => props.makeSlides()}
+                            onClick={() => {window.fathom.trackGoal('CERWLEIP', 0); props.makeSlides()}}
                             disabled={noSongsSelected || props.slidesCreated === true}
                     >
                         {props.slidesCreated === false ? "Make Slides" : "Slides Downloaded!"}

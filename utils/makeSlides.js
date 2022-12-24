@@ -51,7 +51,7 @@ async function makeSlides(selectedSongs) {
     })
 
     // save the presentation
-    await pres.writeFile({fileName: 'praiseio-worship-slides.pptx'});
+    await pres.writeFile({fileName: 'musicminapp-worship-slides.pptx'});
 }
 
 const LYRICS_DELIMITER = '\r\n---\r\n'

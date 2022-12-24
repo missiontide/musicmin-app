@@ -18,8 +18,8 @@ function App({ Component, pageProps }) {
 
         function onRouteChangeComplete() {
             Fathom.trackPageview();
+            Fathom.trackGoal('CERWLEIP', 0);
         }
-        Fathom.trackGoal('CERWLEIP', 0);
         // Record a pageview when route changes
         router.events.on('routeChangeComplete', onRouteChangeComplete);
 

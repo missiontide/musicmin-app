@@ -34,7 +34,6 @@ export default function App() {
 
     // handles add song click
     function handleAddSong(song) {
-        window.fathom.trackGoal('YMDOEQUB', 0);
         // too many songs added -- show error Toast
         if (selectedSongs.length >= 10) {
             setShowError(true);
@@ -59,7 +58,6 @@ export default function App() {
     // Make slides
     function handleSubmit() {
         Fathom.trackGoal('CERWLEIP', 0);
-        window.fathom.trackGoal('YMDOEQUB', 0);
         setLoading(true);
         makeSlides(selectedSongs).finally(() => {
             setLoading(false);

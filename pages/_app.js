@@ -12,13 +12,14 @@ function App({ Component, pageProps }) {
     useEffect(() => {
         // Initialize Fathom when the app loads
         Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
-            includedDomains: ['www.musicmin.app'],
+            includedDomains: ['www.musicmin.app', 'localhost:3000', 'http://localhost:3000'],
             url: 'https://rain-optimistic.musicmin.app/script.js',
         });
 
         function onRouteChangeComplete() {
             Fathom.trackPageview();
         }
+        Fathom.trackGoal('CERWLEIP', 0);
         // Record a pageview when route changes
         router.events.on('routeChangeComplete', onRouteChangeComplete);
 

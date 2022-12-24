@@ -1,5 +1,6 @@
 import PptxGenJS from "pptxgenjs";
 import { titleSlideStyle, lyricSlideStyle } from './slidesStyles.js'
+import * as Fathom from "fathom-client";
 
 async function makeSlides(selectedSongs) {
     // get lyrics
@@ -50,8 +51,7 @@ async function makeSlides(selectedSongs) {
         usedSongTitles.push(songTitle);
     })
 
-    // count slideshows created
-    window.fathom.trackGoal('CERWLEIP', 0);
+    Fathom.trackGoal('CERWLEIP', 0);
 
     // save the presentation
     await pres.writeFile({fileName: 'musicminapp-worship-slides.pptx'});

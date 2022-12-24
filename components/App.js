@@ -57,8 +57,8 @@ export default function App() {
 
     // Make slides
     function handleSubmit() {
+        Fathom.trackGoal('CERWLEIP', 0);
         setLoading(true);
-        Fathom.trackGoal('YMDOEQUB', 0);
         makeSlides(selectedSongs).finally(() => {
             setLoading(false);
             setSlidesCreated(true);

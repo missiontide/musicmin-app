@@ -27,7 +27,7 @@ export default function SelectedSongs(props) {
                                 >
                                     {/* selected songs list */}
                                     {props.selectedSongs.map((song, index) => {
-                                        const idKey=index + "-" + song['_id'];
+                                        const idKey=index + "-" + song['id'];
                                         return (
                                             <Draggable
                                                 draggableId={idKey}

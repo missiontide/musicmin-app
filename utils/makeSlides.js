@@ -1,13 +1,12 @@
 import PptxGenJS from "pptxgenjs";
 import { titleSlideStyle, lyricSlideStyle } from './slidesStyles.js'
 
-
 async function makeSlides(selectedSongs) {
     // get lyrics
     const selectedSongIds = [];
-    selectedSongs.forEach(song => selectedSongIds.push(song._id).toString())
+    selectedSongs.forEach(song => selectedSongIds.push(song.id).toString())
 
-    const response = await fetch((process.env.MUSICMIN_DB_HOST) + "/lyrics?songs=" + selectedSongIds.toString());
+    const response = await fetch((process.env.NEXT_PUBLIC_MUSICMIN_DB_HOST) + "/lyrics?songs=" + selectedSongIds.toString());
     const selectedSongLyrics = await response.json();
 
     // DB pulls songs in id order
@@ -15,9 +14,10 @@ async function makeSlides(selectedSongs) {
     const orderedSongLyrics = [];
     selectedSongIds.forEach(songId => {
         orderedSongLyrics.push(
-            selectedSongLyrics.find(song => song._id.toString() === songId)
+            selectedSongLyrics.find(song => song.id === songId)
         )
     });
+
 
     // generate slides using pptxgenjs
     let pres = new PptxGenJS();
@@ -40,7 +40,8 @@ async function makeSlides(selectedSongs) {
         slide.addText(songTitle, titleSlideStyle);
 
         // add song lyrics
-        songLyric['lyrics'].forEach(lyric => {
+        let lyrics = parseLyricsToArray(songLyric['lyrics']);
+        lyrics.forEach(lyric => {
             let slide = pres.addSlide({ sectionTitle: sectionTitle});
             slide.addText(lyric, lyricSlideStyle);
         })
@@ -51,6 +52,12 @@ async function makeSlides(selectedSongs) {
 
     // save the presentation
     await pres.writeFile({fileName: 'praiseio-worship-slides.pptx'});
+}
+
+const LYRICS_DELIMITER = '\r\n---\r\n'
+
+function parseLyricsToArray(lyrics) {
+    return lyrics.split(LYRICS_DELIMITER)
 }
 
 export default makeSlides;

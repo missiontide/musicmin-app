@@ -1,0 +1,57 @@
+.App {
+    text-align: center;
+    padding: 0;
+}
+
+.App-header {
+    max-width: 90%;
+    margin: 75px auto;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+}
+
+.makeSlidesButton {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.signature {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 15px;
+}
+.signature a { color: black}
+
+#loadingOverlay {
+    position: fixed; /* Sit on top of the page content */
+    display: block; /* set to none to hide */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 1050; /* must be above OffCanvas which is 1040 */
+}
+
+/* ProgressBar style */
+#loadingOverlay .progress {
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+#loadingOverlay .loadingText {
+    color: white;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}

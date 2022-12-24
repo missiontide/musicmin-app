@@ -6,8 +6,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fontsource/montserrat": "^4.5.13",
+    "bootstrap": "^5.2.3",
+    "fuse.js": "^6.6.2",
     "next": "latest",
+    "pptxgenjs": "^3.11.0",
     "react": "18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "18.2.0"
   }
 }

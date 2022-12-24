@@ -1,0 +1,57 @@
+input.songSearchBar {
+    margin: 0 auto;
+    max-width: 652px;
+    height: 69px;
+    font-size: 21px;
+    font-weight: bold;
+    border: none;
+    border-radius: 40px;
+    padding-left: 42px;
+    padding-right: 20px;
+    /*box-shadow: 5px 19px 15px -16px #111111;*/
+}
+
+.table {
+    margin: auto 0;
+    max-width: 652px;
+    vertical-align: middle;
+    font-size: 17px;
+}
+
+.tableWrapper {
+    height: 35rem;
+    overflow: auto;
+    max-width: 669px;
+    margin: 0 auto;
+}
+.songSearchBar::-webkit-scrollbar { width: 10px; }
+.songSearchBar::-webkit-scrollbar-thumb { background: #212529; }
+.songSearchBar::-webkit-scrollbar-thumb:hover { background: #131314; }
+.table>:not(caption)>*>* {
+    background-color: white;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: #f9eddc;
+    color: var(--bs-table-striped-color);
+}
+
+/* top-left border-radius */
+.table tr:first-child th:first-child {
+    border-top-left-radius: 40px;
+}
+
+/* top-right border-radius */
+.table tr:first-child th:last-child {
+    border-top-right-radius: 40px;
+}
+
+/* bottom-left border-radius */
+.table tr:last-child td:first-child {
+    border-bottom-left-radius: 40px;
+}
+
+/* bottom-right border-radius */
+.table tr:last-child td:last-child {
+    border-bottom-right-radius: 40px;
+}

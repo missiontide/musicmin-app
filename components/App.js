@@ -34,6 +34,7 @@ export default function App() {
 
     // handles add song click
     function handleAddSong(song) {
+        window.fathom.trackGoal('YMDOEQUB', 0);
         // too many songs added -- show error Toast
         if (selectedSongs.length >= 10) {
             setShowError(true);

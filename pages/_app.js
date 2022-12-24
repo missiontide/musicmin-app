@@ -16,7 +16,7 @@ function App({ Component, pageProps }) {
         //  - This must be an exact match of your domain.
         //  - If you're using www. for your domain, make sure you include that here.
         Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
-            includedDomains: ['musicmin.app'],
+            includedDomains: ['www.musicmin.app'],
         });
 
         function onRouteChangeComplete() {

@@ -51,6 +51,9 @@ async function makeSlides(selectedSongs) {
         usedSongTitles.push(songTitle);
     })
 
+    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
+        includedDomains: ['www.musicmin.app'],
+    });
     Fathom.trackGoal('CERWLEIP', 0);
 
     // save the presentation

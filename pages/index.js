@@ -14,7 +14,6 @@ function HomePage() {
                 <meta property="og:description" content="Let us take care of the .ppt, you focus on worshipping. 🙏" />
                 <meta property="og:image" content="https://www.musicmin.app/social-media.png" />
                 <meta property="og:type" content="website" />
-                <script defer data-domain="musicmin.app" src="https://plausible.io/js/script.js"></script>
             </Head>
             <App />
         </React.StrictMode>

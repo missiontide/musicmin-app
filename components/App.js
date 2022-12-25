@@ -6,6 +6,7 @@ import SelectedSongs from "./SelectedSongs";
 import makeSlides from "../utils/makeSlides";
 import {ProgressBar, Toast, ToastContainer, Image} from "react-bootstrap";
 import { DragDropContext } from "react-beautiful-dnd";
+import { usePlausible } from 'next-plausible'
 
 export default function App() {
     const [songs, setSongs] = useState([]);
@@ -14,6 +15,7 @@ export default function App() {
     const [loading, setLoading] = useState(false);
     const [slidesCreated, setSlidesCreated] = useState(false);
     const [showError, setShowError] = useState(false);
+    const plausible = usePlausible()
 
     // Initialize
     // get song data from api
@@ -55,6 +57,8 @@ export default function App() {
 
     // Make slides
     function handleSubmit() {
+
+        plausible('Slideshow Made');
         setLoading(true);
         makeSlides(selectedSongs).finally(() => {
             setLoading(false);

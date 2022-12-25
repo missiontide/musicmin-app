@@ -16,7 +16,7 @@ Router.events.on('routeChangeComplete', (as, routeProps) => {
 function App({ Component, pageProps }) {
     // Initialize Fathom when the app loads
     useEffect(() => {
-        Fathom.load('process.env.NEXT_PUBLIC_FATHOM_SITE_ID', {
+        Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
             includedDomains: ['www.musicmin.app'],
             url: 'https://rain-optimistic.musicmin.app/script.js',
         });

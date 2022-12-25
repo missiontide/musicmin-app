@@ -30,6 +30,12 @@ export default function App() {
         };
 
         getData().then()
+
+        Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
+            includedDomains: ['www.musicmin.app'],
+            url: 'https://rain-optimistic.musicmin.app/script.js',
+            spa: 'auto',
+        });
     }, [])
 
     // handles add song click

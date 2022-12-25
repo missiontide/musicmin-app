@@ -21,7 +21,6 @@ function App({ Component, pageProps }) {
             url: 'https://rain-optimistic.musicmin.app/script.js',
             spa: 'auto',
         });
-        Fathom.trackGoal('YMDOEQUB', 0);
     }, []);
 
     return <Component {...pageProps} />;

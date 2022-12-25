@@ -122,7 +122,7 @@ export default function App() {
                     onShow={() => setShowCanvas(true)}
                     onHide={() => setShowCanvas(false)}
                     show={showCanvas}
-                    makeSlides={() => Fathom.trackGoal('CERWLEIP', 0)}//}
+                    makeSlides={() => handleSubmit()}
                     slidesCreated={slidesCreated}
                 />
             </DragDropContext>

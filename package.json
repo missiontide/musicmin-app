@@ -10,7 +10,6 @@
   "dependencies": {
     "@fontsource/montserrat": "^4.5.13",
     "bootstrap": "^5.2.3",
-    "fathom-client": "^3.5.0",
     "fuse.js": "^6.6.2",
     "next": "latest",
     "pptxgenjs": "^3.11.0",

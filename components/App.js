@@ -6,8 +6,6 @@ import SelectedSongs from "./SelectedSongs";
 import makeSlides from "../utils/makeSlides";
 import {ProgressBar, Toast, ToastContainer, Image} from "react-bootstrap";
 import { DragDropContext } from "react-beautiful-dnd";
-import * as Fathom from "fathom-client";
-
 
 export default function App() {
     const [songs, setSongs] = useState([]);
@@ -30,12 +28,6 @@ export default function App() {
         };
 
         getData().then()
-
-        Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
-            includedDomains: ['www.musicmin.app'],
-            url: 'https://rain-optimistic.musicmin.app/script.js',
-            spa: 'auto',
-        });
     }, [])
 
     // handles add song click
@@ -63,7 +55,6 @@ export default function App() {
 
     // Make slides
     function handleSubmit() {
-        Fathom.trackGoal('YMDOEQUB', 0);
         setLoading(true);
         makeSlides(selectedSongs).finally(() => {
             setLoading(false);

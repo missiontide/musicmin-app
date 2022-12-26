@@ -7,15 +7,18 @@ import makeSlides from "../utils/makeSlides";
 import {ProgressBar, Toast, ToastContainer, Image} from "react-bootstrap";
 import { DragDropContext } from "react-beautiful-dnd";
 import { usePlausible } from 'next-plausible'
+import RequestSongModal from "./RequestSongModal";
 
 export default function App() {
     const [songs, setSongs] = useState([]);
     const [selectedSongs, setSelectedSongs] = useState([]);
     const [showCanvas, setShowCanvas] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [sending, setSending] = useState(false);
     const [slidesCreated, setSlidesCreated] = useState(false);
     const [showError, setShowError] = useState(false);
     const plausible = usePlausible()
+    const MAX_SONGS = 10;
 
     // Initialize
     // get song data from api
@@ -35,7 +38,7 @@ export default function App() {
     // handles add song click
     function handleAddSong(song) {
         // too many songs added -- show error Toast
-        if (selectedSongs.length >= 10) {
+        if (selectedSongs.length >= MAX_SONGS) {
             setShowError(true);
         } else {
             // add song to selected songs and open selected songs canvas
@@ -85,10 +88,12 @@ export default function App() {
             <p className="signature">
                 made by <a href="https://www.missiontide.com" target="_blank" rel="noreferrer">@missiontide</a>
             </p>
-            {loading && (
+            {(loading || sending) && (
                 <div id="loadingOverlay">
                     <div>
-                        <h3 className="loadingText">Creating worship slides...</h3>
+                        <h3 className="loadingText">
+                            {loading ? 'Creating worship slides...' : 'Sending song request...'}
+                        </h3>
                         <ProgressBar animated now={65}/>
                     </div>
                 </div>)
@@ -101,7 +106,6 @@ export default function App() {
                     autohide>
                     <Toast.Header>
                         <img
-                            src="holder.js/20x20?text=%20"
                             className="rounded me-2"
                             alt=""
                         />
@@ -112,7 +116,9 @@ export default function App() {
                 </Toast>
             </ToastContainer>
 
-
+            <RequestSongModal
+                setSending={setSending}
+            />
             <header className="App-header">
                 <Image src="/logo.png" className="App-logo" alt="logo" fluid />
             </header>

@@ -54,7 +54,7 @@ async function makeSlides(selectedSongs) {
     await pres.writeFile({fileName: 'musicminapp-worship-slides.pptx'});
 }
 
-const LYRICS_DELIMITER = '\r\n---\r\n'
+const LYRICS_DELIMITER = '\n---\n'
 
 function parseLyricsToArray(lyrics) {
     return lyrics.split(LYRICS_DELIMITER)

@@ -7,7 +7,7 @@ export default class SlideStyles {
             align: "center",
             valign: "middle",
             fontSize: 65,
-            fontFace: 'Century Gothic',
+            fontFace: "Century Gothic",
             bold: true,
             fit: "shrink",
             isTextBox: true,
@@ -20,7 +20,7 @@ export default class SlideStyles {
             align: "center",
             valign: "middle",
             fontSize: 35,
-            fontFace: 'Arial',
+            fontFace: "Arial",
             fit: "shrink",
             isTextBox: true,
             color: "000000",
@@ -29,6 +29,8 @@ export default class SlideStyles {
         this.slideBackgroundStyle = {
             color: "FFFFFF",
         }
+
+        this.allCaps = false;
     }
 
     setDarkMode(bool) {
@@ -41,6 +43,17 @@ export default class SlideStyles {
             this.slideBackgroundStyle.color = "FFFFFF"
             this.titleSlideTextStyle.color = "000000"
             this.lyricSlideTextStyle.color = "000000"
+        }
+    }
+
+    setAllCaps(bool) {
+        // enable all caps
+        if (bool) {
+            this.allCaps = true;
+            this.lyricSlideTextStyle.fontFace = "Calibri";
+        } else {
+            this.allCaps = false;
+            this.lyricSlideTextStyle.fontFace = "Arial";
         }
     }
 

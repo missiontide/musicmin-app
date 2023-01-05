@@ -34,22 +34,29 @@ async function makeSlides(selectedSongs, slideStyles) {
 
     orderedSongLyrics.forEach(songLyric => {
         // add song title
-        const songTitle = songLyric.title;
+        let songTitle = songLyric.title;
         let sectionTitle = songTitle;
 
         // duplicate handling ... same title section will ruin order
         let occurrences = countOccurrences(usedSongTitles, songTitle);
         if (occurrences > 0) {sectionTitle = sectionTitle + " (" + occurrences.toString() + ")"}
 
+        // add section
         pptx.addSection({ title: sectionTitle})
+
+        // add title slide
         let slide = pptx.addSlide({ sectionTitle: sectionTitle});
         slide.background = slideStyles.slideBackgroundStyle;
+        // all caps handling
+        if (slideStyles.allCaps === true) {songTitle = songTitle.toUpperCase()}
         slide.addText(songTitle, slideStyles.titleSlideTextStyle);
 
-        // add song lyrics
+        // add lyrics slides
         let lyrics = parseLyricsToArray(songLyric['lyrics']);
         lyrics.forEach(lyric => {
             let slide = pptx.addSlide({ sectionTitle: sectionTitle});
+            // all caps handling
+            if (slideStyles.allCaps === true) {lyric = lyric.toUpperCase()}
             slide.addText(lyric, slideStyles.lyricSlideTextStyle);
             slide.background = slideStyles.slideBackgroundStyle;
         })

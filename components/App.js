@@ -19,6 +19,7 @@ export default function App() {
     const [slidesCreated, setSlidesCreated] = useState(false);
     const [showError, setShowError] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
+    const [allCaps, setAllCaps] = useState(false);
     const plausible = usePlausible()
     const MAX_SONGS = 10;
 
@@ -73,6 +74,7 @@ export default function App() {
     function getSlideStyles() {
         const slideStyles = new SlideStyles();
         slideStyles.setDarkMode(darkMode);
+        slideStyles.setAllCaps(allCaps);
         return slideStyles;
     }
 
@@ -138,6 +140,8 @@ export default function App() {
                     show={showCanvas}
                     darkMode={darkMode}
                     setDarkMode={setDarkMode}
+                    allCaps={allCaps}
+                    setAllCaps={setAllCaps}
                     makeSlides={() => handleSubmit()}
                     slidesCreated={slidesCreated}
                 />

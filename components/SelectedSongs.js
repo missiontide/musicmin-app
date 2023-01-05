@@ -71,8 +71,8 @@ export default function SelectedSongs(props) {
                     >
                         <Card.Header>Slide Styles</Card.Header>
                         <Card.Body>
-                            {/* Dark Mode */}
                             <Row>
+                                {/* Dark Mode */}
                                 <Col>
                                     <Form.Check
                                         type="switch"
@@ -80,6 +80,16 @@ export default function SelectedSongs(props) {
                                         onChange={() => props.setDarkMode(!props.darkMode)}
                                         className="float-left"
                                         label="Dark Mode"
+                                    />
+                                </Col>
+                                {/* All Caps */}
+                                <Col>
+                                    <Form.Check
+                                        type="switch"
+                                        checked={props.allCaps}
+                                        onChange={() => props.setAllCaps(!props.allCaps)}
+                                        className="float-left"
+                                        label="All Caps"
                                     />
                                 </Col>
                             </Row>

@@ -1,4 +1,5 @@
-import { Offcanvas, Button, Card, ListGroup } from "react-bootstrap";
+import { Offcanvas, Button, Card, ListGroup, Row, Col } from "react-bootstrap";
+import Form from 'react-bootstrap/Form';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 export default function SelectedSongs(props) {
@@ -63,6 +64,27 @@ export default function SelectedSongs(props) {
                             {noSongsSelected ? "Add a song >" : "Add more songs >"}
                         </Button>
                     }
+                    {/* Slide styling */}
+                    <Card id="slideStyleCard"
+                          style={{ width: '22.5rem', bottom: "6.5rem", marginLeft: "16px"}}
+                          className="fixed-bottom"
+                    >
+                        <Card.Header>Slide Styles</Card.Header>
+                        <Card.Body>
+                            {/* Dark Mode */}
+                            <Row>
+                                <Col>
+                                    <Form.Check
+                                        type="switch"
+                                        checked={props.darkMode}
+                                        onChange={() => props.setDarkMode(!props.darkMode)}
+                                        className="float-left"
+                                        label="Dark Mode"
+                                    />
+                                </Col>
+                            </Row>
+                        </Card.Body>
+                    </Card>
                     {/* make slides button */}
                     <Button variant="primary" style={{height: '6rem'}}
                             className="float-end fixed-bottom position-absolute"

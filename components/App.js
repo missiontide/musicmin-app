@@ -8,6 +8,7 @@ import {ProgressBar, Toast, ToastContainer, Image} from "react-bootstrap";
 import { DragDropContext } from "react-beautiful-dnd";
 import { usePlausible } from 'next-plausible'
 import RequestSongModal from "./RequestSongModal";
+import SlideStyles from "../utils/SlidesStyles";
 
 export default function App() {
     const [songs, setSongs] = useState([]);
@@ -17,6 +18,7 @@ export default function App() {
     const [sending, setSending] = useState(false);
     const [slidesCreated, setSlidesCreated] = useState(false);
     const [showError, setShowError] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);
     const plausible = usePlausible()
     const MAX_SONGS = 10;
 
@@ -60,13 +62,18 @@ export default function App() {
 
     // Make slides
     function handleSubmit() {
-
-        plausible('Slideshow Made');
+        plausible('Slideshow Made'); // analytics
         setLoading(true);
-        makeSlides(selectedSongs).finally(() => {
+        makeSlides(selectedSongs, getSlideStyles()).finally(() => {
             setLoading(false);
             setSlidesCreated(true);
         });
+    }
+
+    function getSlideStyles() {
+        const slideStyles = new SlideStyles();
+        slideStyles.setDarkMode(darkMode);
+        return slideStyles;
     }
 
     // handle drag-and-drop ordering
@@ -129,6 +136,8 @@ export default function App() {
                     onShow={() => setShowCanvas(true)}
                     onHide={() => setShowCanvas(false)}
                     show={showCanvas}
+                    darkMode={darkMode}
+                    setDarkMode={setDarkMode}
                     makeSlides={() => handleSubmit()}
                     slidesCreated={slidesCreated}
                 />

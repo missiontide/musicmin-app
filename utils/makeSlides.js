@@ -1,7 +1,12 @@
 import PptxGenJS from "pptxgenjs";
-import { titleSlideStyle, lyricSlideStyle } from './slidesStyles.js'
 
-async function makeSlides(selectedSongs) {
+/**
+ *
+ * @param {Array} selectedSongs
+ * @param {SlideStyles} slideStyles
+ * @returns {Promise<void>}
+ */
+async function makeSlides(selectedSongs, slideStyles) {
     // get lyrics
     const selectedSongIds = [];
     selectedSongs.forEach(song => selectedSongIds.push(song.id).toString())
@@ -37,13 +42,15 @@ async function makeSlides(selectedSongs) {
 
         pres.addSection({ title: sectionTitle})
         let slide = pres.addSlide({ sectionTitle: sectionTitle});
-        slide.addText(songTitle, titleSlideStyle);
+        slide.background = slideStyles.slideBackgroundStyle;
+        slide.addText(songTitle, slideStyles.titleSlideTextStyle);
 
         // add song lyrics
         let lyrics = parseLyricsToArray(songLyric['lyrics']);
         lyrics.forEach(lyric => {
             let slide = pres.addSlide({ sectionTitle: sectionTitle});
-            slide.addText(lyric, lyricSlideStyle);
+            slide.addText(lyric, slideStyles.lyricSlideTextStyle);
+            slide.background = slideStyles.slideBackgroundStyle;
         })
 
         // duplicate handling

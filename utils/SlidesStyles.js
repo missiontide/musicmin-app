@@ -43,4 +43,38 @@ export default class SlideStyles {
             this.lyricSlideTextStyle.color = "000000"
         }
     }
+
+    getTitleSlideMasterProps() {
+        return {
+            title: "Title Slide",
+            background: this.slideBackgroundStyle,
+            objects: [
+                { placeholder: {
+                    text: "Song Title",
+                    options: {
+                        ...this.titleSlideTextStyle,
+                        name: "title",
+                        type: "title",
+                    }
+                } },
+            ]
+        }
+    }
+
+    getLyricSlideMasterProps() {
+        return {
+            title: "Lyric Slide",
+            background: this.slideBackgroundStyle,
+            objects: [
+                { placeholder: {
+                    text: "Song Lyrics",
+                    options: {
+                        ...this.lyricSlideTextStyle,
+                        name: "body",
+                        type: "body",
+                    }
+                } },
+            ]
+        }
+    }
 }

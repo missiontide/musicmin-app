@@ -23,9 +23,10 @@ async function makeSlides(selectedSongs, slideStyles) {
         )
     });
 
-
     // generate slides using pptxgenjs
-    let pres = new PptxGenJS();
+    let pptx = new PptxGenJS();
+    pptx.defineSlideMaster(slideStyles.getTitleSlideMasterProps());
+    pptx.defineSlideMaster(slideStyles.getLyricSlideMasterProps());
 
     // duplicate handling -- for preserving order
     let usedSongTitles = [];
@@ -40,15 +41,15 @@ async function makeSlides(selectedSongs, slideStyles) {
         let occurrences = countOccurrences(usedSongTitles, songTitle);
         if (occurrences > 0) {sectionTitle = sectionTitle + " (" + occurrences.toString() + ")"}
 
-        pres.addSection({ title: sectionTitle})
-        let slide = pres.addSlide({ sectionTitle: sectionTitle});
+        pptx.addSection({ title: sectionTitle})
+        let slide = pptx.addSlide({ sectionTitle: sectionTitle});
         slide.background = slideStyles.slideBackgroundStyle;
         slide.addText(songTitle, slideStyles.titleSlideTextStyle);
 
         // add song lyrics
         let lyrics = parseLyricsToArray(songLyric['lyrics']);
         lyrics.forEach(lyric => {
-            let slide = pres.addSlide({ sectionTitle: sectionTitle});
+            let slide = pptx.addSlide({ sectionTitle: sectionTitle});
             slide.addText(lyric, slideStyles.lyricSlideTextStyle);
             slide.background = slideStyles.slideBackgroundStyle;
         })
@@ -58,7 +59,7 @@ async function makeSlides(selectedSongs, slideStyles) {
     })
 
     // save the presentation
-    await pres.writeFile({fileName: 'musicminapp-worship-slides.pptx'});
+    await pptx.writeFile({fileName: 'musicminapp-worship-slides.pptx'});
 }
 
 const LYRICS_DELIMITER = '\n---\n'

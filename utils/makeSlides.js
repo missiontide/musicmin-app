@@ -1,4 +1,5 @@
 import PptxGenJS from "pptxgenjs";
+import ApiWrapper from "./ApiWrapper";
 
 /**
  *
@@ -7,12 +8,10 @@ import PptxGenJS from "pptxgenjs";
  * @returns {Promise<void>}
  */
 async function makeSlides(selectedSongs, slideStyles) {
-    // get lyrics
+    // get lyrics from API
     const selectedSongIds = [];
-    selectedSongs.forEach(song => selectedSongIds.push(song.id).toString())
-
-    const response = await fetch((process.env.NEXT_PUBLIC_MUSICMIN_DB_HOST) + "/lyrics?songs=" + selectedSongIds.toString());
-    const selectedSongLyrics = await response.json();
+    selectedSongs.forEach(song => selectedSongIds.push(song.id))
+    const selectedSongLyrics = await ApiWrapper.getLyrics(selectedSongIds)
 
     // DB pulls songs in id order
     // need to re-order according to user's selection

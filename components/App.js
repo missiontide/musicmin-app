@@ -9,6 +9,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { usePlausible } from 'next-plausible'
 import RequestSongModal from "./RequestSongModal";
 import SlideStyles from "../utils/SlidesStyles";
+import ApiWrapper from "../utils/ApiWrapper";
 
 export default function App() {
     const [songs, setSongs] = useState([]);
@@ -23,16 +24,12 @@ export default function App() {
     const plausible = usePlausible()
     const MAX_SONGS = 10;
 
-    // Initialize
-    // get song data from api
+    // Initialize: get song data from API
     useEffect(() => {
-        // function to make GET request to server for api
+        // need to define an async function
         const getData = async () => {
-            const response = await fetch((process.env.NEXT_PUBLIC_MUSICMIN_DB_HOST) + "/songs");
-            const data = await response.json();
-
+            const data = await ApiWrapper.getAllSongs();
             setSongs(data);
-            // this.render();
         };
 
         getData().then()

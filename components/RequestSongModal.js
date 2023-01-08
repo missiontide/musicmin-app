@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {Button, Modal, Toast, ToastContainer} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import ApiWrapper from "../utils/ApiWrapper";
 
 export default function RequestSongModal(props) {
     const [show, setShow] = useState(false);
@@ -42,12 +43,7 @@ export default function RequestSongModal(props) {
     };
 
     async function sendEmail() {
-        const response = await fetch(
-            (process.env.NEXT_PUBLIC_MUSICMIN_DB_HOST) + "/request"
-            + "?songTitle=" + formData.songTitle
-            + "&songArtist=" + formData.songArtist
-            + "&email=" + formData.email
-        );
+        const response = ApiWrapper.sendSongRequest(formData.songTitle, formData.songArtist, formData.email);
     }
 
     return (

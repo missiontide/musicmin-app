@@ -6,6 +6,10 @@ export default class ApiWrapper {
         return response.json();
     }
 
+    static async apiCallNoJson(route = "", params = "") {
+        return await fetch(this.url + route + params);
+    }
+
     /**
      * @returns {Promise<any>} json list of all songs with fields: id, title, artist
      */
@@ -31,5 +35,20 @@ export default class ApiWrapper {
     static async getSong(songId) {
         const route = "/songs/" + songId;
         return this.apiCall(route)
+    }
+
+    /**
+     * @param {string} songTitle
+     * @param {string} songArtist
+     * @param {string} email
+     * @returns {Promise<any>} 200 if successful
+     */
+    static async sendSongRequest(songTitle, songArtist, email) {
+        const route = "/request";
+        const params = "?"
+            + "songTitle=" + songTitle
+            + "&songArtist=" + songArtist
+            + "&email=" + email
+        return await this.apiCallNoJson(route, params);
     }
 }

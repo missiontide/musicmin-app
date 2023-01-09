@@ -59,7 +59,6 @@ class SongSearchBar extends React.Component {
                         placeholder="type a song or artist..."
                         onChange={this.handleChange}
                         value={this.state.searchInput}
-                        autoFocus={true}
                     />
                 </div>
                 <div>
@@ -67,9 +66,9 @@ class SongSearchBar extends React.Component {
                     <Image src="/dropshadow.png" alt="drop shadow" fluid />
                 </div>
 
-                {/* Initializing loading animation while song list is being pulled from backend*/}
+                {/* Initializing loading animation while song list is being pulled from backend */}
                 {this.props.songs.length === 0 && this.state.searchInput.length > 0 && (
-                    <div>
+                    <div className={styles.spinnerContainer}>
                         <Spinner animation="border" variant="light" />
                         <p>Loading Songs...</p>
                     </div>
@@ -77,7 +76,7 @@ class SongSearchBar extends React.Component {
 
                 {/* Table of Song Results */}
                 {songsToDisplay.length !== 0 &&
-                    (<>
+                    (<div className={styles.divThatEnclosesTable}>
                         <div className={styles.tableWrapper}>
                             <Table striped borderless className={styles.table + " " + styles.tableStriped}>
                                 <thead>
@@ -92,7 +91,14 @@ class SongSearchBar extends React.Component {
                                     return (
                                         <tr key={index}>
                                             <td>
-                                                {song.has_chords ? <Link href={"/songs/"+song.slug}>{song.title}</Link> : song.title}
+                                                {song.has_chords
+                                                    ? <Link
+                                                        href={"/songs/"+song.slug}
+                                                        onClick={() => setTimeout(() => this.setState({searchInput: ""}), 1000)}
+                                                      >
+                                                        {song.title}
+                                                      </Link>
+                                                    : song.title}
                                             </td>
                                             <td>{song.artist}</td>
                                             <td><AddSongButton
@@ -104,10 +110,8 @@ class SongSearchBar extends React.Component {
                                 })}
                                 </tbody>
                             </Table>
-                            {/* drop shadow image */}
-                            <Image src="/dropshadow.png" alt="drop shadow" fluid />
                         </div>
-                    </>)
+                    </div>)
                 }
             </div>
         )

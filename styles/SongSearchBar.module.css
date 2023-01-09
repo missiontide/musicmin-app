@@ -18,11 +18,25 @@ input.songSearchBar {
     font-size: 17px;
 }
 
+.divThatEnclosesTable {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
 .tableWrapper {
     height: 35rem;
     overflow: auto;
     max-width: 669px;
     margin: 0 auto;
+    box-shadow: -56px 10px 81px -69px rgb(0 0 0 / 60%);
+    -moz-box-shadow: -56px 10px 81px -69px rgb(0 0 0 / 60%);
+    -webkit-box-shadow: -56px 10px 81px -69px rgb(0 0 0 / 60%);
+    -o-box-shadow: -56px 10px 81px -69px rgb(0 0 0 / 60%);
+    border-radius: 40px;
 }
 .tableWrapper::-webkit-scrollbar { width: 10px; }
 .tableWrapper::-webkit-scrollbar-thumb { background: #212529; }
@@ -54,4 +68,17 @@ input.songSearchBar {
 /* bottom-right border-radius */
 .table tr:last-child td:last-child {
     border-bottom-right-radius: 40px;
+}
+
+.table a {
+    color: black;
+}
+
+.spinnerContainer {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
 }

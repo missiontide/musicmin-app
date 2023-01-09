@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../styles/App.module.css';
 
 import React, { useState, useEffect } from 'react';
@@ -11,6 +10,7 @@ import { usePlausible } from 'next-plausible'
 import RequestSongModal from "./RequestSongModal";
 import SlideStyles from "../utils/SlidesStyles";
 import ApiWrapper from "../utils/ApiWrapper";
+import Link from "next/link";
 
 export default function App(props) {
     const [songs, setSongs] = useState([]);
@@ -126,8 +126,9 @@ export default function App(props) {
             <RequestSongModal
                 setSending={setSending}
             />
-            <header className={styles.AppHeader}>
-                <Image src="/logo.png" alt="logo" fluid />
+            {/* className styling logic moves height of logo and search higher for Chords Pages */}
+            <header className={props.useChordsPageStyling !== true ? styles.AppHeader : styles.AppHeaderAlt}>
+                <Link href="/"><Image src="/logo.png" alt="logo" fluid /></Link>
             </header>
             <DragDropContext onDragEnd={onDragEnd}>
                 <SelectedSongs

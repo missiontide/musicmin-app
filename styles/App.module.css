@@ -10,6 +10,14 @@
     font-size: calc(10px + 2vmin);
 }
 
+/* moves height of logo and search higher for Chords Pages */
+.AppHeaderAlt {
+    max-width: 90%;
+    margin: 15px auto;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+}
+
 .signature {
     position: absolute;
     top: 10px;

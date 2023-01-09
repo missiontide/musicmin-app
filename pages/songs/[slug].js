@@ -9,7 +9,6 @@ export const Song = (props) => {
 
     return (
         <React.StrictMode>
-
             <NextSeo
                 title={title}
                 openGraph={{
@@ -24,8 +23,12 @@ export const Song = (props) => {
                     ],
                 }}
             />
-            <App />
+            <App
+                useChordsPageStyling={true}
+            />
             <Chords
+                title={props.title}
+                artist={props.artist}
                 chords={props.chords}
             />
         </React.StrictMode>

@@ -41,7 +41,7 @@
 }
 
 /* ProgressBar style */
-.loadingOverlay .progress {
+.progress {
     width: 60%;
     position: absolute;
     top: 50%;
@@ -50,7 +50,7 @@
     -ms-transform: translate(-50%,-50%);
 }
 
-.loadingOverlay .loadingText {
+.loadingText {
     color: white;
     position: absolute;
     top: 45%;

@@ -96,12 +96,12 @@ export default function App(props) {
                 made by <a href="https://www.missiontide.com" target="_blank" rel="noreferrer">@missiontide</a>
             </p>
             {(loading || sending) && (
-                <div id={styles.loadingOverlay}>
+                <div className={styles.loadingOverlay}>
                     <div>
-                        <h3 className="loadingText">
+                        <h3 className={styles.loadingText}>
                             {loading ? 'Creating worship slides...' : 'Sending song request...'}
                         </h3>
-                        <ProgressBar animated now={65}/>
+                        <ProgressBar animated now={65} className={styles.progress} />
                     </div>
                 </div>)
             }

@@ -1,8 +1,6 @@
 import React from 'react';
-import "@fontsource/montserrat";
 import App from '../components/App';
 import Head from "next/head";
-
 
 function HomePage() {
     return (

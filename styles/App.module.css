@@ -3,17 +3,11 @@
     padding: 0;
 }
 
-.App-header {
+.AppHeader {
     max-width: 90%;
     margin: 75px auto;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-}
-
-.makeSlidesButton {
-    position: absolute;
-    top: 10px;
-    left: 20px;
 }
 
 .signature {
@@ -24,7 +18,7 @@
 }
 .signature a { color: black}
 
-#loadingOverlay {
+.loadingOverlay {
     position: fixed; /* Sit on top of the page content */
     display: block; /* set to none to hide */
     width: 100%; /* Full width (cover the whole page) */
@@ -39,7 +33,7 @@
 }
 
 /* ProgressBar style */
-#loadingOverlay .progress {
+.loadingOverlay .progress {
     width: 60%;
     position: absolute;
     top: 50%;
@@ -48,7 +42,7 @@
     -ms-transform: translate(-50%,-50%);
 }
 
-#loadingOverlay .loadingText {
+.loadingOverlay .loadingText {
     color: white;
     position: absolute;
     top: 45%;

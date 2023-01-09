@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import styles from '../styles/App.module.css';
 
 import React, { useState, useEffect } from 'react';
 import SongSearchBar from "./SongSearchBar";
@@ -11,7 +12,7 @@ import RequestSongModal from "./RequestSongModal";
 import SlideStyles from "../utils/SlidesStyles";
 import ApiWrapper from "../utils/ApiWrapper";
 
-export default function App() {
+export default function App(props) {
     const [songs, setSongs] = useState([]);
     const [selectedSongs, setSelectedSongs] = useState([]);
     const [showCanvas, setShowCanvas] = useState(false);
@@ -90,12 +91,12 @@ export default function App() {
     }
 
     return (
-        <div className="App">
-            <p className="signature">
+        <div className={styles.App}>
+            <p className={styles.signature}>
                 made by <a href="https://www.missiontide.com" target="_blank" rel="noreferrer">@missiontide</a>
             </p>
             {(loading || sending) && (
-                <div id="loadingOverlay">
+                <div id={styles.loadingOverlay}>
                     <div>
                         <h3 className="loadingText">
                             {loading ? 'Creating worship slides...' : 'Sending song request...'}
@@ -125,8 +126,8 @@ export default function App() {
             <RequestSongModal
                 setSending={setSending}
             />
-            <header className="App-header">
-                <Image src="/logo.png" className="App-logo" alt="logo" fluid />
+            <header className={styles.AppHeader}>
+                <Image src="/logo.png" alt="logo" fluid />
             </header>
             <DragDropContext onDragEnd={onDragEnd}>
                 <SelectedSongs

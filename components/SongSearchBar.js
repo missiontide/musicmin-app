@@ -1,3 +1,5 @@
+import styles from '../styles/SongSearchBar.module.css';
+
 import React from 'react';
 import { Table, Button, Spinner, Image, Form } from "react-bootstrap";
 import Fuse from 'fuse.js';
@@ -52,7 +54,7 @@ class SongSearchBar extends React.Component {
                 {/* Search Bar */}
                 <div>
                     <Form.Control
-                        className="songSearchBar"
+                        className={styles.songSearchBar}
                         type="search"
                         placeholder="type a song or artist..."
                         onChange={this.handleChange}
@@ -66,7 +68,7 @@ class SongSearchBar extends React.Component {
                 </div>
 
                 {/* Initializing loading animation while song list is being pulled from backend*/}
-                {this.props.songs.length === 0 && (
+                {this.props.songs.length === 0 && this.state.searchInput.length > 0 && (
                     <div>
                         <Spinner animation="border" variant="light" />
                         <p>Loading Songs...</p>
@@ -76,8 +78,8 @@ class SongSearchBar extends React.Component {
                 {/* Table of Song Results */}
                 {songsToDisplay.length !== 0 &&
                     (<>
-                        <div className="tableWrapper">
-                            <Table striped borderless>
+                        <div className={styles.tableWrapper}>
+                            <Table striped borderless className={styles.table + " " + styles.tableStriped}>
                                 <thead>
                                 <tr>
                                     <th>Song</th>

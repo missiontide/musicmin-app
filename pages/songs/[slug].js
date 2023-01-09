@@ -4,14 +4,6 @@ import App from "../../components/App";
 import ApiWrapper from "../../utils/ApiWrapper";
 import Chords from "../../components/Chords";
 
-// import '../../styles/globals.css'
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import '../../styles/App.module.css'
-// import '../../styles/SongSearchBar.module.css'
-// import '../../styles/RequestSongModal.module.css'
-
-
-
 export const Song = (props) => {
     const title = props.title + " - " + props.artist + " Chords | musicmin.app";
 

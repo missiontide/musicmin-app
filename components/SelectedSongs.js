@@ -1,3 +1,5 @@
+import styles from '../styles/SelectedSongs.module.css';
+
 import { Offcanvas, Button, Card, ListGroup, Row, Col } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
@@ -8,7 +10,7 @@ export default function SelectedSongs(props) {
     return (
         <>
             {/* top-left button: open offCanvas */}
-            <Button className="makeSlidesButton" variant="dark" onClick={props.onShow}>
+            <Button className={styles.makeSlidesButton} variant="dark" onClick={props.onShow}>
                 Make Slides
             </Button>
 

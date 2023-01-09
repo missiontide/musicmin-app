@@ -1,3 +1,5 @@
+import styles from '../styles/RequestSongModal.module.css';
+
 import React, { useState } from "react";
 import {Button, Modal, Toast, ToastContainer} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
@@ -48,7 +50,7 @@ export default function RequestSongModal(props) {
 
     return (
         <>
-            <p className="requestSong">
+            <p className={styles.requestSong}>
                 <a onClick={handleShow}>
                     Request a Song
                 </a>

@@ -31,7 +31,7 @@ input.songSearchBar {
     background-color: white;
 }
 
-.table-striped>tbody>tr:nth-of-type(odd)>* {
+.tableStriped>tbody>tr:nth-of-type(odd)>* {
     --bs-table-accent-bg: #f9eddc;
     color: var(--bs-table-striped-color);
 }

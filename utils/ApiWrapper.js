@@ -29,11 +29,11 @@ export default class ApiWrapper {
     }
 
     /**
-     * @param {int[]} songId
+     * @param {string} slug
      * @returns {Promise<any>} json of one song data
      */
-    static async getSong(songId) {
-        const route = "/songs/" + songId;
+    static async getSong(slug) {
+        const route = "/songs/" + slug;
         return this.apiCall(route)
     }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table, Button, Spinner, Image, Form } from "react-bootstrap";
 import Fuse from 'fuse.js';
+import Link from 'next/link';
 
 class SongSearchBar extends React.Component {
     constructor(props) {
@@ -88,7 +89,9 @@ class SongSearchBar extends React.Component {
                                 {songsToDisplay.map((song, index) => {
                                     return (
                                         <tr key={index}>
-                                            <td>{song.title}</td>
+                                            <td>
+                                                {song.has_chords ? <Link href={"/songs/"+song.slug}>{song.title}</Link> : song.title}
+                                            </td>
                                             <td>{song.artist}</td>
                                             <td><AddSongButton
                                                 value={song.id}

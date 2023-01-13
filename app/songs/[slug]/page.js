@@ -2,13 +2,11 @@ import React from 'react';
 import App from "../../../components/App";
 import ApiWrapper from "../../../utils/ApiWrapper";
 import Chords from "../../../components/Chords";
-import PlausibleProvider from "next-plausible";
 
 export const Song = async (props) => {
     const songData = await getSong(props.params.slug);
 
     return (
-        <PlausibleProvider domain="musicmin.app">
         <React.StrictMode>
             <App
                 useChordsPageStyling={true}
@@ -19,7 +17,6 @@ export const Song = async (props) => {
                 chords={songData.chords}
             />
         </React.StrictMode>
-        </PlausibleProvider>
     )
 }
 

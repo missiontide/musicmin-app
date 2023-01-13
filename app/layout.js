@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Montserrat} from "@next/font/google";
+import PlausibleProvider from "next-plausible";
 
 const montserrat = Montserrat({
     subsets: ['latin'],
@@ -13,7 +14,8 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-        <body className={montserrat.className}>{children}</body>
+            <PlausibleProvider domain="musicmin.app" />
+            <body className={montserrat.className}>{children}</body>
         </html>
     );
 }

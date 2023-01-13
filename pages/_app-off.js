@@ -1,5 +1,4 @@
 import '../styles/globals.css'
-import "@fontsource/montserrat";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PlausibleProvider from 'next-plausible'
 

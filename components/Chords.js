@@ -1,7 +1,8 @@
+"use client";
+
 import styles from '../styles/Chords.module.css';
 
 import React from "react";
-import App from "./App";
 
 export default function Chords(props) {
     return (

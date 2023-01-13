@@ -1,3 +1,8 @@
+"use client";
+
+import '../styles/globals.css'
+import "@fontsource/montserrat";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../styles/App.module.css';
 
 import React, { useState, useEffect } from 'react';

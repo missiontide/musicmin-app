@@ -1,5 +1,5 @@
 import React from 'react';
-import { NextSeo } from 'next-seo';
+// import { NextSeo } from 'next-seo';
 import App from "../../components/App";
 import ApiWrapper from "../../utils/ApiWrapper";
 import Chords from "../../components/Chords";
@@ -9,20 +9,20 @@ export const Song = (props) => {
 
     return (
         <React.StrictMode>
-            <NextSeo
-                title={title}
-                openGraph={{
-                    type: 'website',
-                    url: 'https://www.musicmin.app/songs/' + props.slug,
-                    title: title,
-                    description: "Make worship slides and chord sheets instantly.",
-                    images: [
-                        {
-                            url: 'https://www.musicmin.app/social-media.png'
-                        }
-                    ],
-                }}
-            />
+            {/*<NextSeo*/}
+            {/*    title={title}*/}
+            {/*    openGraph={{*/}
+            {/*        type: 'website',*/}
+            {/*        url: 'https://www.musicmin.app/songs/' + props.slug,*/}
+            {/*        title: title,*/}
+            {/*        description: "Make worship slides and chord sheets instantly.",*/}
+            {/*        images: [*/}
+            {/*            {*/}
+            {/*                url: 'https://www.musicmin.app/social-media.png'*/}
+            {/*            }*/}
+            {/*        ],*/}
+            {/*    }}*/}
+            {/*/>*/}
             <App
                 useChordsPageStyling={true}
             />

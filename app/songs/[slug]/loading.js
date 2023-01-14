@@ -1,16 +1,12 @@
 import React from "react";
-import App from "../../../components/App";
-import Chords from "../../../components/Chords";
+import AppSkeleton from "./AppSkeleton";
+import ChordsSkeleton from "./ChordsSkeleton";
 
 export default function Loading() {
     return (
         <>
-            <App
-                useChordsPageStyling={true}
-            />
-            <Chords
-                title="Loading..."
-            />
+            <ChordsSkeleton />
+            <AppSkeleton />
         </>
     )
 }

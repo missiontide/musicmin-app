@@ -21,6 +21,7 @@ export const Song = async (props) => {
 }
 
 async function getSong(slug) {
+    // await new Promise(resolve => setTimeout(resolve, 2000));
     return await ApiWrapper.getSong(slug);
 }
 

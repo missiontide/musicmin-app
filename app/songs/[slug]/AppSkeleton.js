@@ -26,6 +26,7 @@ export default function AppSkeleton() {
                 />
                 <SongSearchBar
                     songs={[]}
+                    chordsPage={true}
                 />
             </div>
         </>

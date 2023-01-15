@@ -67,7 +67,10 @@ class SongSearchBar extends React.Component {
                 </div>
 
                 {/* Initializing loading animation while song list is being pulled from backend */}
-                {this.props.songs.length === 0 && this.state.searchInput.length > 0 && (
+                {this.props.songs.length === 0
+                    && this.state.searchInput.length > 0
+                    && this.props.chordsPage === undefined // if this is a chords page, there's already a loading spinner
+                    && (
                     <div className={styles.spinnerContainer}>
                         <Spinner animation="border" variant="light" />
                         <p>Loading Songs...</p>

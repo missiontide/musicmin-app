@@ -162,6 +162,7 @@ export default function App(props) {
                 songs={songs}
                 onClick={(song) => handleAddSong(song)}
                 setLoadingChordsPage={setLoadingChordsPage}
+                chordsPage={props.chordsSlug}
             />
             { props.chordsSlug && (
                 <Chords

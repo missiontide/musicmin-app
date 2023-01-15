@@ -2,7 +2,7 @@ export default class ApiWrapper {
     static url = process.env.NEXT_PUBLIC_MUSICMIN_DB_HOST;
 
     static async apiCall(route = "", params = "") {
-        const response = await fetch(this.url + route + params, {cache: 'force-cache'});
+        const response = await fetch(this.url + route + params);
         return response.json();
     }
 

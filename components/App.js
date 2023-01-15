@@ -13,6 +13,8 @@ import RequestSongModal from "./RequestSongModal";
 import SlideStyles from "../utils/SlidesStyles";
 import ApiWrapper from "../utils/ApiWrapper";
 import Link from "next/link";
+import Chords from "./Chords";
+import Loading from "../app/songs/[slug]/loading";
 
 export default function App(props) {
     const [songs, setSongs] = useState([]);
@@ -20,6 +22,7 @@ export default function App(props) {
     const [showCanvas, setShowCanvas] = useState(false);
     const [loading, setLoading] = useState(false);
     const [sending, setSending] = useState(false);
+    const [loadingChordsPage, setLoadingChordsPage] = useState(false);
     const [slidesCreated, setSlidesCreated] = useState(false);
     const [showError, setShowError] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
@@ -92,6 +95,14 @@ export default function App(props) {
         setSelectedSongs(newSelectedSongs);
     }
 
+
+     /* chords page has a fetch in head.js -- this is blocking.
+      * to give user visual feedback as soon as they click, we set the loading page here
+      * once head.js returns, then the proper loading.js -> page.js process happens */
+    if (loadingChordsPage) {
+        return <Loading />
+    }
+
     return (
         <div className={styles.App}>
             <p className={styles.signature}>
@@ -129,7 +140,7 @@ export default function App(props) {
                 setSending={setSending}
             />
             {/* className styling logic moves height of logo and search higher for Chords Pages */}
-            <header className={props.useChordsPageStyling !== true ? styles.AppHeader : styles.AppHeaderAlt}>
+            <header className={props.chordsSlug ? styles.AppHeaderAlt : styles.AppHeader}>
                 <Link href="/"><Image src="/logo.png" alt="logo" fluid /></Link>
             </header>
             <DragDropContext onDragEnd={onDragEnd}>
@@ -150,7 +161,13 @@ export default function App(props) {
             <SongSearchBar
                 songs={songs}
                 onClick={(song) => handleAddSong(song)}
+                setLoadingChordsPage={setLoadingChordsPage}
             />
+            { props.chordsSlug && (
+                <Chords
+                    slug={props.chordsSlug}
+                />
+            )}
         </div>
     );
 }

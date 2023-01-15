@@ -92,7 +92,10 @@ class SongSearchBar extends React.Component {
                                         <tr key={index}>
                                             <td>
                                                 {song.has_chords
-                                                    ? <Link href={"/songs/"+song.slug}>{song.title}</Link>
+                                                    ? <Link
+                                                        href={"/songs/"+song.slug}
+                                                        onClick={() => this.props.setLoadingChordsPage(true)}
+                                                    >{song.title}</Link>
                                                     : song.title}
                                             </td>
                                             <td>{song.artist}</td>

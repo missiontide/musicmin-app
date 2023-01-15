@@ -6,10 +6,7 @@ export const Song = async (props) => {
     return (
         <React.StrictMode>
             <App
-                useChordsPageStyling={true}
-            />
-            <Chords
-                slug={props.params.slug}
+                chordsSlug={props.params.slug}
             />
         </React.StrictMode>
     )

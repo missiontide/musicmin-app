@@ -5,8 +5,8 @@ export default class ApiWrapper {
         const response = await fetch(
             this.url + route + params,
             {
-                cache: 'force-cache',
-                next: { revalidate: 600 }
+                // cache: 'force-cache',
+                // next: { revalidate: 600 }
             }
         );
         return response.json();

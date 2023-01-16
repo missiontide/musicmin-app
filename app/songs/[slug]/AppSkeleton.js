@@ -14,6 +14,7 @@ export default function AppSkeleton() {
             <div className={styles.App}>
                 <p className={styles.signature}>
                     made by <a href="https://www.missiontide.com" target="_blank" rel="noreferrer">@missiontide</a>
+                    &nbsp;& <a href="https://gabbley.github.io/" target="_blank" rel="noreferrer">@gabbley</a>
                 </p>
 
                 <RequestSongModal />

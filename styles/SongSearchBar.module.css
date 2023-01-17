@@ -37,11 +37,18 @@ input.songSearchBar {
     -webkit-box-shadow: -56px 10px 81px -69px rgb(0 0 0 / 60%);
     -o-box-shadow: -56px 10px 81px -69px rgb(0 0 0 / 60%);
     border-radius: 40px;
+    text-align: left;
 }
 .tableWrapper::-webkit-scrollbar { width: 10px; }
 .tableWrapper::-webkit-scrollbar-thumb { background: #212529; }
 .tableWrapper::-webkit-scrollbar-thumb:hover { background: #131314; }
 
+.table th {
+    text-align: center;
+}
+.table tbody tr td:first-child {
+    padding-left: 30px;
+}
 .table>:not(caption)>*>* {
     background-color: white;
 }

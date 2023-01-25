@@ -3,3 +3,15 @@
     top: 10px;
     left: 20px;
 }
+
+.clearButton {
+    position: absolute;
+    right: 175px;
+    margin-top: 10px;
+}
+
+.addSongsButton {
+    position: absolute;
+    right: 22px;
+    margin-top: 10px;
+}

@@ -56,11 +56,21 @@ export default function SelectedSongs(props) {
                             }
                         </Droppable>
                     </Card>
+                    {/* Clear all songs button */}
+                    {props.selectedSongs.length > 0 &&
+                        <Button variant="outline-danger"
+                                size="sm"
+                                className={styles.clearButton}
+                                onClick={() => props.removeAllSongs()}
+                        >
+                            Clear all
+                        </Button>
+                    }
                     {/* Add more songs button (closes Offcanvas) */}
                     {props.selectedSongs.length < 10 &&
                         <Button variant="dark"
                                 size="sm"
-                                style={{"marginTop": "10px", "marginLeft": "13rem"}}
+                                className={styles.addSongsButton}
                                 onClick={props.onHide}
                         >
                             {noSongsSelected ? "Add a song >" : "Add more songs >"}

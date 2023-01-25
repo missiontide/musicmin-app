@@ -39,7 +39,12 @@ export default function Chords(props) {
                 <div className={styles.chords + " " + robotoMono.className}>
                     {Object.keys(songData).length === 0 ? loadingJsx :
                         (<>
-                        <Button variant="dark" onClick={() => props.onClick(songData)}>+ Add Song</Button>
+                        <Button
+                            variant="dark"
+                            className={montserrat.className}
+                            onClick={() => props.onClick(songData)}>
+                            + Add Song
+                        </Button>
                         <h4>{songData.title} - {songData.artist}</h4>
                         <br/>
                         <div dangerouslySetInnerHTML={{ __html: songData.chords }} />

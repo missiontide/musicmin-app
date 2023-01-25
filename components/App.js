@@ -70,6 +70,12 @@ export default function App(props) {
         setSlidesCreated(false); // when a change occurs, re-enable the create slides button
     }
 
+    function removeAllSongs() {
+        setSelectedSongs([]);
+        setShowCanvas(false);
+        setSlidesCreated(false); // when a change occurs, re-enable the create slides button
+    }
+
     // Make slides
     function handleSubmit() {
         plausible('Slideshow Made'); // analytics
@@ -154,6 +160,7 @@ export default function App(props) {
                 <SelectedSongs
                     selectedSongs={selectedSongs}
                     onClick={(idx) => handleRemoveSong(idx)}
+                    removeAllSongs={() => removeAllSongs()}
                     onShow={() => setShowCanvas(true)}
                     onHide={() => setShowCanvas(false)}
                     show={showCanvas}

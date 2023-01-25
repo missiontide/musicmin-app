@@ -32,7 +32,7 @@ export default function App(props) {
 
     // Initialize: get song data from API, load selectedSongs from localStorage
     useEffect(() => {
-        setSelectedSongs(JSON.parse(localStorage.getItem('selectedSongs')));
+        setSelectedSongs(JSON.parse(localStorage.getItem('selectedSongs')) || []);
 
         // need to define an async function
         const getData = async () => {

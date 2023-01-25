@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import ApiWrapper from "../utils/ApiWrapper";
 import appStyles from "../styles/SongSearchBar.module.css";
 import {Roboto_Mono, Montserrat} from "@next/font/google";
+import {Button} from "react-bootstrap";
 
 const robotoMono = Roboto_Mono({subsets: ['latin'],});
 const montserrat = Montserrat({subsets: ['latin'],});
@@ -38,6 +39,7 @@ export default function Chords(props) {
                 <div className={styles.chords + " " + robotoMono.className}>
                     {Object.keys(songData).length === 0 ? loadingJsx :
                         (<>
+                        <Button variant="dark" onClick={() => props.onClick(songData)}>+ Add Song</Button>
                         <h4>{songData.title} - {songData.artist}</h4>
                         <br/>
                         <div dangerouslySetInnerHTML={{ __html: songData.chords }} />

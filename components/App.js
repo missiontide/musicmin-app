@@ -167,6 +167,7 @@ export default function App(props) {
             />
             { props.chordsSlug && (
                 <Chords
+                    onClick={(song) => handleAddSong(song)}
                     slug={props.chordsSlug}
                 />
             )}

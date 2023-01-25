@@ -30,8 +30,10 @@ export default function App(props) {
     const plausible = usePlausible()
     const MAX_SONGS = 10;
 
-    // Initialize: get song data from API
+    // Initialize: get song data from API, load selectedSongs from localStorage
     useEffect(() => {
+        setSelectedSongs(JSON.parse(localStorage.getItem('selectedSongs')));
+
         // need to define an async function
         const getData = async () => {
             const data = await ApiWrapper.getAllSongs();
@@ -53,6 +55,10 @@ export default function App(props) {
             setSlidesCreated(false); // when a change occurs, re-enable the create slides button
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem('selectedSongs', JSON.stringify(selectedSongs));
+    }, [selectedSongs])
 
     // handles selected song remove click
     // removes song at index of selectedSongs

@@ -26,10 +26,20 @@ export default class ApiWrapper {
 
     /**
      * @param {int[]} songIds
-     * @returns {Promise<any>} json list of songs with all fields: id, title, artist, lyrics, chords, etc.
+     * @returns {Promise<any>} json list of songs with all fields: id, title, artist, lyrics, etc.
      */
     static async getLyrics(songIds) {
         const route = "/lyrics";
+        const params = "?songs=" + songIds.toString();
+        return this.apiCall(route, params)
+    }
+
+    /**
+     * @param {int[]} songIds
+     * @returns {Promise<any>} json list of songs with all fields: id, title, artist, key, chords, etc.
+     */
+    static async getChords(songIds) {
+        const route = "/chords";
         const params = "?songs=" + songIds.toString();
         return this.apiCall(route, params)
     }

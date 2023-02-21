@@ -13,8 +13,8 @@ export default async function Head({ params }) {
         <>
             <title>{title}</title>
             <meta property="og:url" content={url} />
-            <meta property="og:title" content="Instant Worship Slides" />
-            <meta property="og:description" content="Let us take care of the .ppt, you focus on worshipping. 🙏" />
+            <meta property="og:title" content={title} />
+            <meta property="og:description" content="Instant Worship Slides & Chords" />
             <meta property="og:image" content="https://www.musicmin.app/social-media.png" />
             <meta property="og:type" content="website" />
         </>

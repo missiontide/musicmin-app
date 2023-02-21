@@ -1,5 +1,4 @@
 import ApiWrapper from "./ApiWrapper";
-import html2pdf from "html2pdf.js";
 
 /**
  *
@@ -33,7 +32,6 @@ async function makeChords(selectedSongs) {
         let styledChordsHtmlString = wrapInChordsStyleDiv(songChord.chords);
         chordsHtmlString +=  titleAndArtistHtmlString + styledChordsHtmlString;
     })
-    console.log(chordsHtmlString);
 
     // generate .pdf using html2pdf
     html2pdf(chordsHtmlString, {

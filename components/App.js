@@ -15,6 +15,7 @@ import ApiWrapper from "../utils/ApiWrapper";
 import Link from "next/link";
 import Chords from "./Chords";
 import Loading from "../app/songs/[slug]/loading";
+import makeChords from "../utils/makeChords";
 
 export default function App(props) {
     const [songs, setSongs] = useState([]);
@@ -27,6 +28,7 @@ export default function App(props) {
     const [showError, setShowError] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
     const [allCaps, setAllCaps] = useState(false);
+    const [exportType, setExportType] = useState('slideshow');
     const plausible = usePlausible()
     const MAX_SONGS = 10;
 
@@ -78,12 +80,21 @@ export default function App(props) {
 
     // Make slides
     function handleSubmit() {
-        plausible('Slideshow Made'); // analytics
-        setLoading(true);
-        makeSlides(selectedSongs, getSlideStyles()).finally(() => {
-            setLoading(false);
-            setSlidesCreated(true);
-        });
+        if (exportType === "slideshow") {
+            plausible('Slideshow Made'); // analytics
+            setLoading(true);
+            makeSlides(selectedSongs, getSlideStyles()).finally(() => {
+                setLoading(false);
+                setSlidesCreated(true);
+            });
+        } else if (exportType === "chordsheets") {
+            plausible('Chord Sheet Made'); // analytics
+            setLoading(true);
+            makeChords(selectedSongs).finally(() => {
+                setLoading(false);
+                setSlidesCreated(true);
+            });
+        }
     }
 
     function getSlideStyles() {
@@ -168,8 +179,11 @@ export default function App(props) {
                     setDarkMode={setDarkMode}
                     allCaps={allCaps}
                     setAllCaps={setAllCaps}
-                    makeSlides={() => handleSubmit()}
+                    onSubmit={() => handleSubmit()}
                     slidesCreated={slidesCreated}
+                    resetSubmit={() => setSlidesCreated(false)}
+                    exportType={exportType}
+                    setExportType={setExportType}
                 />
             </DragDropContext>
             <SongSearchBar

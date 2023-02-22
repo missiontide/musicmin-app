@@ -136,7 +136,14 @@ export default function App(props) {
                 <div className={styles.loadingOverlay}>
                     <div>
                         <h3 className={styles.loadingText}>
-                            {loading ? 'Creating worship slides...' : 'Sending song request...'}
+                            {loading ?
+                                ('Creating worship'
+                                    + (exportType === 'slideshow'?
+                                        ' slides...' :
+                                        ' chords...')
+                                )
+                                : 'Sending song request...'
+                            }
                         </h3>
                         <ProgressBar animated now={65} className={styles.progress} />
                     </div>

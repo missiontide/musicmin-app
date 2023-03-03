@@ -1,6 +1,6 @@
 .makeSlidesButton {
-    position: absolute;
-    bottom: 95px;
+    position: fixed;
+    bottom: 70px;
     left: 40px;
     z-index: 1000;
     background-color: #eed9b6;
@@ -15,11 +15,11 @@
 }
 
 .makeSlidesCaption {
-    position: absolute;
-    bottom: 52px;
+    position: fixed;
+    bottom: 28px;
     left: 40px;
     line-height: 18px;
-    color: #f9f2e6;
+    color: black;
 }
 
 .clearButton {

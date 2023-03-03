@@ -54,7 +54,7 @@ input.songSearchBar {
 }
 
 .tableStriped>tbody>tr:nth-of-type(odd)>* {
-    --bs-table-accent-bg: #f9eddc;
+    --bs-table-accent-bg: #f8e3c8;
     color: var(--bs-table-striped-color);
 }
 

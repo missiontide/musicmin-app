@@ -1,6 +1,6 @@
 import styles from '../styles/SelectedSongs.module.css';
 
-import { Offcanvas, Button, Card, ListGroup, Row, Col } from "react-bootstrap";
+import { Offcanvas, Button, Card, ListGroup, Row, Col, CloseButton } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 
@@ -11,37 +11,28 @@ export default function SelectedSongs(props) {
     return (
         <>
             {/* top-left button: open offCanvas */}
-            <Button className={styles.makeSlidesButton} variant="dark" onClick={props.onShow}>
-                Make {exportTypeWord}
+            <Button className={styles.makeSlidesButton} variant="light" onClick={props.onShow}>
+                ⟵
             </Button>
+            <div className={styles.makeSlidesCaption}>
+                Worship<br/>Tools
+            </div>
 
             <Offcanvas show={props.show} onHide={props.onHide}>
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>
-                        Make:
+                <Offcanvas.Header className={styles.offCanvasHeader}>
+                    <Offcanvas.Title className={styles.offCanvasTitle}>
+                        Worship Tools<br/>
                     </Offcanvas.Title>
-                    <div className={styles.exportRadio}>
-                        <Form.Check
-                            inline
-                            label="Slides"
-                            name="group1"
-                            type="radio"
-                            checked={props.exportType === "slideshow"}
-                            onChange={() => {props.setExportType("slideshow"); props.resetSubmit();}}
-                        />
-                        <Form.Check
-                            inline
-                            label="Chords"
-                            name="group1"
-                            type="radio"
-                            checked={props.exportType === "chordsheets"}
-                            onChange={() => {props.setExportType("chordsheets"); props.resetSubmit();}}
-                        />
-                    </div>
+                    <CloseButton
+                        className={styles.closeButton}
+                        onClick={() => props.onHide()}
+                    />
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Card style={{ width: '22.5rem' }}>
-                        <Card.Header>{noSongsSelected ? "Select a song" : "Selected Songs" }</Card.Header>
+                        <Card.Header className={styles.cardHeader}>
+                            {noSongsSelected ? "No songs currently added" : "Click and drag to reorder songs" }
+                        </Card.Header>
                         {/* drag and drop context */}
                         <Droppable droppableId={"selectedSongDroppable"}>
                             {provided =>
@@ -94,49 +85,79 @@ export default function SelectedSongs(props) {
                                 className={styles.addSongsButton}
                                 onClick={props.onHide}
                         >
-                            {noSongsSelected ? "Add a song >" : "Add more songs >"}
+                            Add songs →
                         </Button>
                     }
                     {/* Slide styling */}
-                    {props.exportType === "slideshow" && (
-                        <Card id="slideStyleCard"
-                              style={{ width: '22.5rem', bottom: "6.5rem", marginLeft: "16px"}}
-                              className="fixed-bottom"
-                        >
-                            <Card.Header>Slide Styles</Card.Header>
-                            <Card.Body>
-                                <Row>
-                                    {/* Dark Mode */}
-                                    <Col>
-                                        <Form.Check
-                                            type="switch"
-                                            checked={props.darkMode}
-                                            onChange={() => {props.setDarkMode(!props.darkMode); props.resetSubmit();}}
-                                            className="float-left"
-                                            label="Dark Mode"
-                                        />
-                                    </Col>
-                                    {/* All Caps */}
-                                    <Col>
-                                        <Form.Check
-                                            type="switch"
-                                            checked={props.allCaps}
-                                            onChange={() => {props.setAllCaps(!props.allCaps); props.resetSubmit();}}
-                                            className="float-left"
-                                            label="All Caps"
-                                        />
-                                    </Col>
-                                </Row>
-                            </Card.Body>
-                        </Card>
-                    )}
-                    {/* make slides button */}
-                    <Button variant="primary" style={{height: '6rem'}}
-                            className="float-end fixed-bottom position-absolute"
-                            onClick={() => props.onSubmit()}
-                            disabled={noSongsSelected || props.slidesCreated === true}
+                    <Card id="slideStyleCard"
+                          style={{ width: '22.5rem', bottom: "6.5rem", marginLeft: "16px"}}
+                          className="fixed-bottom"
                     >
-                        {props.slidesCreated === false ? "Make "+exportTypeWord : exportTypeWord+" Downloaded!"}
+                        <Card.Header
+                            className={styles.cardHeader}
+                        >
+                            Options
+                        </Card.Header>
+                        <Card.Body
+                            className={styles.slidesStylesCardBody}
+                        >
+                            <Row className={styles.stylesFirstRow}>
+                                <div className={styles.exportRadio}>
+                                    <strong>Make</strong>:
+                                    <Form.Check
+                                        inline
+                                        className={styles.slidesRadioButton}
+                                        label="Slides"
+                                        name="group1"
+                                        type="radio"
+                                        checked={props.exportType === "slideshow"}
+                                        onChange={() => {props.setExportType("slideshow"); props.resetSubmit();}}
+                                    />
+                                    <Form.Check
+                                        inline
+                                        label="Chords"
+                                        name="group1"
+                                        type="radio"
+                                        checked={props.exportType === "chordsheets"}
+                                        onChange={() => {props.setExportType("chordsheets"); props.resetSubmit();}}
+                                    />
+
+                                </div>
+                            </Row>
+                            <Row className={styles.stylesSecondRow}>
+                                {/* Dark Mode */}
+                                <Col>
+                                    <Form.Check
+                                        type="switch"
+                                        checked={props.darkMode}
+                                        onChange={() => {props.setDarkMode(!props.darkMode); props.resetSubmit();}}
+                                        className="float-left"
+                                        label="Dark Mode"
+                                        disabled={props.exportType !== "slideshow"}
+                                    />
+                                </Col>
+                                {/* All Caps */}
+                                <Col>
+                                    <Form.Check
+                                        type="switch"
+                                        checked={props.allCaps}
+                                        onChange={() => {props.setAllCaps(!props.allCaps); props.resetSubmit();}}
+                                        className="float-left"
+                                        label="All Caps"
+                                        disabled={props.exportType !== "slideshow"}
+                                    />
+                                </Col>
+                            </Row>
+                        </Card.Body>
+                    </Card>
+                    {/* make slides button */}
+                    <Button
+                        variant="dark"
+                        className={styles.makeButton}
+                        onClick={() => props.onSubmit()}
+                        disabled={noSongsSelected || props.slidesCreated === true}
+                    >
+                        {props.slidesCreated === false ? "Make "+exportTypeWord : "Downloaded!"}
                     </Button>
                 </Offcanvas.Body>
             </Offcanvas>

@@ -145,7 +145,7 @@ export default function App(props) {
                                 : 'Sending song request...'
                             }
                         </h3>
-                        <ProgressBar animated now={65} className={styles.progress} />
+                        <ProgressBar animated now={65} className={styles.progress} variant="warning"/>
                     </div>
                 </div>)
             }

@@ -16,6 +16,8 @@ import Link from "next/link";
 import Chords from "./Chords";
 import Loading from "../app/songs/[slug]/loading";
 import makeChords from "../utils/makeChords";
+import { THEMES } from "../utils/Tags.js"
+import SearchFilter from "./SearchFilter";
 
 export default function App(props) {
     const [songs, setSongs] = useState([]);
@@ -29,6 +31,7 @@ export default function App(props) {
     const [darkMode, setDarkMode] = useState(false);
     const [allCaps, setAllCaps] = useState(false);
     const [exportType, setExportType] = useState('slideshow');
+    const [selectedThemes, setSelectedThemes] = useState([]);
     const plausible = usePlausible()
     const MAX_SONGS = 10;
 
@@ -198,6 +201,13 @@ export default function App(props) {
                 onClick={(song) => handleAddSong(song)}
                 setLoadingChordsPage={setLoadingChordsPage}
                 chordsPage={props.chordsSlug}
+                selectedThemes={selectedThemes}
+            />
+            <SearchFilter
+                options={THEMES}
+                placeholder={"select theme(s)"}
+                selectedOptions={selectedThemes}
+                setSelectedOptions={setSelectedThemes}
             />
             { props.chordsSlug && (
                 <Chords

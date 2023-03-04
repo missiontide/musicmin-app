@@ -4,6 +4,7 @@ import React from 'react';
 import { Table, Button, Spinner, Image, Form } from "react-bootstrap";
 import Fuse from 'fuse.js';
 import Link from 'next/link';
+import {getTagValues, getValuesArray} from "../utils/Tags";
 
 class SongSearchBar extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class SongSearchBar extends React.Component {
 
     // searches all songs based on searchInput
     // returns a song object array sorted by matching score
-    searchSongs() {
+    searchSongs(songs) {
         // Fuse search options
         const options = {
             keys: [
@@ -32,21 +33,39 @@ class SongSearchBar extends React.Component {
             threshold: 0.4,
         }
 
-        const allSongs = this.props.songs;
-        const fuseSearch = new Fuse(allSongs, options)
+        const fuseSearch = new Fuse(songs, options)
         const searchResult = fuseSearch.search(this.state.searchInput)
 
         // fuse returns objects sorted by match .score, the object is in .item
         return searchResult.map(result => result['item'])
     }
 
+    filterSongsByTags(songs, selectedTags) {
+        return songs.filter(
+            song => {
+                let tag_ids = JSON.parse(song.tag_ids);
+                // check if tag_ids contains every element of selectedTags
+                return selectedTags.every(v => tag_ids.includes(v))
+            }
+        )
+    }
+
     render() {
 
+        const allSongs = this.props.songs;
         let songsToDisplay = [];
 
+        // search
         if (this.state.searchInput.length > 0) {
             // match song titles/artists with search input
-            songsToDisplay = this.searchSongs();
+            songsToDisplay = this.searchSongs(allSongs);
+        } else if (this.props.selectedThemes.length > 0) {
+            songsToDisplay = allSongs; // if a filter is set, show all songs with that filter
+        }
+
+        // filter
+        if (this.props.selectedThemes.length > 0) {
+            songsToDisplay = this.filterSongsByTags(songsToDisplay, getTagValues(this.props.selectedThemes))
         }
 
         return (

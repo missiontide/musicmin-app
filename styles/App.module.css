@@ -5,7 +5,7 @@
 
 .AppHeader {
     max-width: 90%;
-    margin: 75px auto;
+    margin: 75px auto 50px auto;
     justify-content: center;
     font-size: calc(10px + 2vmin);
 }

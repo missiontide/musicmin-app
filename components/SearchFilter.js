@@ -19,8 +19,9 @@ export default function SearchFilter(props) {
     return (
         <div className="SearchFilter">
             <Select
-                isMulti
-                isSearchable
+                isMulti={props.isMulti}
+                isSearchable={props.isSearchable}
+                isClearable={props.isClearable}
                 defaultValue={props.selectedOptions}
                 onChange={props.setSelectedOptions}
                 options={props.options}

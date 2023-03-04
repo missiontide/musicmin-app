@@ -26,7 +26,12 @@ export const THEMES = [
 export const DIFFICULTIES = [
     {label: "Easy", value: 21},
     {label: "Intermediate", value: 22},
-    {label: "Advance", value: 23},
+    {label: "Advanced", value: 23},
+]
+
+export const TEMPOS = [
+    {label: "Fast", value: 500},
+    {label: "Slow", value: 501},
 ]
 
 export const LITURGICAL_SEASONS = [

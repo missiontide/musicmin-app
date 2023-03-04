@@ -16,7 +16,7 @@ import Link from "next/link";
 import Chords from "./Chords";
 import Loading from "../app/songs/[slug]/loading";
 import makeChords from "../utils/makeChords";
-import { THEMES } from "../utils/Tags.js"
+import { THEMES, DIFFICULTIES, TEMPOS } from "../utils/Tags.js"
 import SearchFilter from "./SearchFilter";
 
 export default function App(props) {
@@ -32,6 +32,8 @@ export default function App(props) {
     const [allCaps, setAllCaps] = useState(false);
     const [exportType, setExportType] = useState('slideshow');
     const [selectedThemes, setSelectedThemes] = useState([]);
+    const [selectedDifficulty, setSelectedDifficulty] = useState(null);
+    const [selectedTempo, setSelectedTempo] = useState(null);
     const plausible = usePlausible()
     const MAX_SONGS = 10;
 
@@ -202,12 +204,34 @@ export default function App(props) {
                 setLoadingChordsPage={setLoadingChordsPage}
                 chordsPage={props.chordsSlug}
                 selectedThemes={selectedThemes}
+                selectedDifficulty={selectedDifficulty}
+                selectedTempo={selectedTempo}
             />
             <SearchFilter
                 options={THEMES}
                 placeholder={"select theme(s)"}
                 selectedOptions={selectedThemes}
                 setSelectedOptions={setSelectedThemes}
+                isMulti={true}
+                isSearchable={true}
+            />
+            <SearchFilter
+                options={DIFFICULTIES}
+                placeholder={"select difficulty"}
+                selectedOptions={selectedDifficulty}
+                setSelectedOptions={setSelectedDifficulty}
+                isMulti={false}
+                isSearchable={false}
+                isClearable={true}
+            />
+            <SearchFilter
+                options={TEMPOS}
+                placeholder={"select tempo"}
+                selectedOptions={selectedTempo}
+                setSelectedOptions={setSelectedTempo}
+                isMulti={false}
+                isSearchable={false}
+                isClearable={true}
             />
             { props.chordsSlug && (
                 <Chords

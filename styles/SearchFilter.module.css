@@ -1,0 +1,41 @@
+.filtersContainer {
+    display: flow-root;
+    max-width: 773px;
+    margin: -14px auto 0;
+    padding-bottom: 10px;
+}
+
+.themesFilter {
+    width: 435px;
+    font-size: 14px;
+    float: left;
+    text-align: left;
+    margin: 0 10px 0 0;
+}
+
+.themesFilter div {
+    border-radius: 19px;
+}
+
+.difficultyFilter {
+    width: 188px;
+    font-size: 14px;
+    float: left;
+    text-align: left;
+}
+
+.difficultyFilter div {
+    border-radius: 19px;
+}
+
+.tempoFilter {
+    width: 130px;
+    font-size: 14px;
+    float: left;
+    text-align: left;
+    margin: 0 0 0 10px;
+}
+
+.tempoFilter div {
+    border-radius: 19px;
+}

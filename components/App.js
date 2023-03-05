@@ -16,8 +16,6 @@ import Link from "next/link";
 import Chords from "./Chords";
 import Loading from "../app/songs/[slug]/loading";
 import makeChords from "../utils/makeChords";
-import { THEMES, DIFFICULTIES, TEMPOS } from "../utils/Tags.js"
-import SearchFilter from "./SearchFilter";
 
 export default function App(props) {
     const [songs, setSongs] = useState([]);
@@ -206,32 +204,6 @@ export default function App(props) {
                 selectedThemes={selectedThemes}
                 selectedDifficulty={selectedDifficulty}
                 selectedTempo={selectedTempo}
-            />
-            <SearchFilter
-                options={THEMES}
-                placeholder={"select theme(s)"}
-                selectedOptions={selectedThemes}
-                setSelectedOptions={setSelectedThemes}
-                isMulti={true}
-                isSearchable={true}
-            />
-            <SearchFilter
-                options={DIFFICULTIES}
-                placeholder={"select difficulty"}
-                selectedOptions={selectedDifficulty}
-                setSelectedOptions={setSelectedDifficulty}
-                isMulti={false}
-                isSearchable={false}
-                isClearable={true}
-            />
-            <SearchFilter
-                options={TEMPOS}
-                placeholder={"select tempo"}
-                selectedOptions={selectedTempo}
-                setSelectedOptions={setSelectedTempo}
-                isMulti={false}
-                isSearchable={false}
-                isClearable={true}
             />
             { props.chordsSlug && (
                 <Chords

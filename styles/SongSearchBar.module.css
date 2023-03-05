@@ -1,6 +1,6 @@
 input.songSearchBar {
     margin: 0 auto;
-    max-width: 652px;
+    max-width: 773px;
     height: 50px;
     font-size: 21px;
     font-weight: 600;
@@ -11,9 +11,23 @@ input.songSearchBar {
     /*box-shadow: 5px 19px 15px -16px #111111;*/
 }
 
+.whiteLine {
+    position: relative;
+    margin: 0 auto;
+    height: 0;
+    width: 773px;
+    top: -27px;
+    right: 0;
+    left: 0;
+    border-bottom: 2px solid rgba(255,255,255,.25);
+}
+
+.whiteLineChordsPage {
+}
+
 .table {
     margin: auto 0;
-    max-width: 652px;
+    max-width: 773px;
     vertical-align: middle;
     font-size: 17px;
 }
@@ -30,7 +44,7 @@ input.songSearchBar {
 .tableWrapper {
     max-height: 35rem;
     overflow: auto;
-    max-width: 669px;
+    max-width: 773px;
     margin: 0 auto;
     box-shadow: -56px 10px 81px -69px rgb(0 0 0 / 60%);
     -moz-box-shadow: -56px 10px 81px -69px rgb(0 0 0 / 60%);
@@ -44,8 +58,14 @@ input.songSearchBar {
 .tableWrapper::-webkit-scrollbar-thumb:hover { background: #131314; }
 
 .table th {
-    text-align: center;
+    text-align: left;
 }
+
+.table th:first-child {
+    padding-left: 30px;
+}
+
+
 .table tbody tr td:first-child {
     padding-left: 30px;
 }
@@ -84,6 +104,7 @@ input.songSearchBar {
 
 .spinnerContainer {
     position: absolute;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     left: 0;

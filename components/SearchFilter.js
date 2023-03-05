@@ -19,6 +19,7 @@ export default function SearchFilter(props) {
     return (
         <div className="SearchFilter">
             <Select
+                className={props.className}
                 isMulti={props.isMulti}
                 isSearchable={props.isSearchable}
                 isClearable={props.isClearable}
@@ -26,6 +27,7 @@ export default function SearchFilter(props) {
                 onChange={props.setSelectedOptions}
                 options={props.options}
                 placeholder={props.placeholder}
+                isOptionDisabled={props.isOptionDisabled}
             />
         </div>
     );

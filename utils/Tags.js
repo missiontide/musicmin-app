@@ -30,8 +30,9 @@ export const DIFFICULTIES = [
 ]
 
 export const TEMPOS = [
-    {label: "Fast", value: 500},
-    {label: "Slow", value: 501},
+    {label: "Fast", value: "Fast"},
+    {label: "Med", value: "Medium"},
+    {label: "Slow", value: "Slow"},
 ]
 
 export const LITURGICAL_SEASONS = [

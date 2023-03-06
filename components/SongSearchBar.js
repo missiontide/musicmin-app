@@ -197,7 +197,10 @@ export default function SongSearchBar(props){
                 </div>)
             }
             {/* No matching song -- search or filter started */}
-            {songsToDisplay.length === 0 && (searchInput.length > 0 || filterSelected) &&
+            {props.songs.length > 0
+                && songsToDisplay.length === 0
+                && (searchInput.length > 0 || filterSelected)
+                &&
                 (<div className={styles.divThatEnclosesTable}>
                     <div className={styles.tableWrapper}>
                         <Table striped borderless size="sm" className={styles.table + " " + styles.tableStriped}>

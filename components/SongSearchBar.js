@@ -159,7 +159,7 @@ export default function SongSearchBar(props){
                                 <th>Artist</th>
                                 <th>Tempo</th>
                                 <th>Key</th>
-                                <th></th>
+                                <th>{/* add song button */}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -191,6 +191,22 @@ export default function SongSearchBar(props){
                                 <td></td>
                                 <td></td>
                             </tr>
+                            </tbody>
+                        </Table>
+                    </div>
+                </div>)
+            }
+            {/* No matching song -- search or filter started */}
+            {songsToDisplay.length === 0 && (searchInput.length > 0 || filterSelected) &&
+                (<div className={styles.divThatEnclosesTable}>
+                    <div className={styles.tableWrapper}>
+                        <Table striped borderless size="sm" className={styles.table + " " + styles.tableStriped}>
+                            <thead><tr><th></th></tr></thead>
+                            <tbody>
+                                <tr><td>
+                                    No matching songs.
+                                </td></tr>
+                            <tr><td></td></tr>
                             </tbody>
                         </Table>
                     </div>

@@ -139,7 +139,7 @@ export default function SongSearchBar(props){
 
             {/* Initializing loading animation while song list is being pulled from backend */}
             {props.songs.length === 0
-                && searchInput.length > 0
+                && (searchInput.length > 0 || filterSelected)
                 && props.chordsPage === undefined // if this is a chords page, there's already a loading spinner
                 && (
                 <div className={styles.spinnerContainer}>

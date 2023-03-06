@@ -158,6 +158,7 @@ export default function SongSearchBar(props){
                                 <th>Song</th>
                                 <th>Artist</th>
                                 <th>Tempo</th>
+                                <th>Key</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -175,6 +176,7 @@ export default function SongSearchBar(props){
                                         </td>
                                         <td>{song.artist}</td>
                                         <td>{song.tempo}</td>
+                                        <td>{song.key}</td>
                                         <td><AddSongButton
                                             value={song.id}
                                             onClick={() => props.onClick(song)}
@@ -182,6 +184,13 @@ export default function SongSearchBar(props){
                                     </tr>
                                 )
                             })}
+                            <tr> {/* empty row for styling */}
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                             </tbody>
                         </Table>
                     </div>

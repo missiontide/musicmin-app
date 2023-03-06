@@ -29,7 +29,7 @@ export default function SelectedSongs(props) {
                     />
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    <Card style={{ width: '22.5rem' }}>
+                    <Card className={styles.offCanvasBodyCard}>
                         <Card.Header className={styles.cardHeader}>
                             {noSongsSelected ? "No songs currently added" : "Click and drag to reorder songs" }
                         </Card.Header>

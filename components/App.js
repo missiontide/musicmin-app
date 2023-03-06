@@ -29,9 +29,6 @@ export default function App(props) {
     const [darkMode, setDarkMode] = useState(false);
     const [allCaps, setAllCaps] = useState(false);
     const [exportType, setExportType] = useState('slideshow');
-    const [selectedThemes, setSelectedThemes] = useState([]);
-    const [selectedDifficulty, setSelectedDifficulty] = useState(null);
-    const [selectedTempo, setSelectedTempo] = useState(null);
     const plausible = usePlausible()
     const MAX_SONGS = 10;
 
@@ -201,9 +198,6 @@ export default function App(props) {
                 onClick={(song) => handleAddSong(song)}
                 setLoadingChordsPage={setLoadingChordsPage}
                 chordsPage={props.chordsSlug}
-                selectedThemes={selectedThemes}
-                selectedDifficulty={selectedDifficulty}
-                selectedTempo={selectedTempo}
             />
             { props.chordsSlug && (
                 <Chords

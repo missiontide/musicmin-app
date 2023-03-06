@@ -41,6 +41,12 @@
     padding-bottom: 0;
 }
 
+.offCanvasBodyCard {
+    width: 22.5rem;
+    overflow-y: auto;
+    max-height: calc(100% - 260px);
+}
+
 .offCanvasTitle {
     font-size: 28px;
 }
